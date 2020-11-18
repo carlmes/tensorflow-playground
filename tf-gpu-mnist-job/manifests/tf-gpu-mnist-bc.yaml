@@ -2,7 +2,7 @@ apiVersion: build.openshift.io/v1
 kind: BuildConfig
 metadata:
   labels:
-    app: tf-gpu-mnist-job  
+    app: tf-gpu-mnist-job
     app.kubernetes.io/component: tf-gpu-mnist-job
     app.kubernetes.io/instance: tf-gpu-mnist-job
     app.kubernetes.io/name: python
@@ -27,10 +27,10 @@ spec:
     type: Source
     sourceStrategy:
       from:
-        kind: ImageStreamTag
-        name: cuda:10.2-base-ubi7
+        kind: ImageStream
+        name: s2i-tensorflow-notebook-gpu
         # No Cuda build
-        # namespace: openshift 
+        # namespace: openshift
         # name: 'python:3.6'
       env:
         - name: UPGRADE_PIP_TO_LATEST
